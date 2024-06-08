@@ -2,6 +2,7 @@ import modelUsuario from '../../../models/usuario.js'
 import modelPersona from '../../../models/persona.js'
 // Orden
 import modelOrden from '../../../models/orden.js'
+import modelOrdEstado from '../../../models/ordenEstado.js'
 // Producto
 import modelDetalle from '../../../models/detalle.js'
 import modelProducto from '../../../models/producto.js'
@@ -9,6 +10,7 @@ import modelProducto from '../../../models/producto.js'
 let usuarios = [...modelUsuario];
 let personas = [...modelPersona];
 let ordenes = [...modelOrden];
+let ordenEstado = [...modelOrdEstado];
 let detalles = [...modelDetalle];
 let productos = [...modelProducto];
 
@@ -31,14 +33,23 @@ const findOne = (id) => {
                     // Rescate de la informacion del producto
                     .map(detalle => {
                         const producto = productos.find(producto => producto.id === detalle.producto_id);
-                        return {    // Retorno especifico de informacion del producto
-                            id: producto.id,
-                            title: producto.title,
-                            orden_id: detalle.orden_id
-                        };
-                    });
+                        if (producto) {
+                            return {    // Retorno especifico de informacion del producto
+                                id: producto.id,
+                                title: producto.title,
+                                orden_id: detalle.orden_id
+                            };
+                        }
+                        return null;
+                    }).filter(producto => producto !== null); // Filtrar productos nulos
+
+                // Agregar estado de la orden
+                const ordEstado = ordenEstado.find(ordEstado => ordEstado.id === orden.estado_id);
+                const estado = ordEstado ? ordEstado.nombre : "Estado desconocido";
+
                 return {
                     ...orden,
+                    estado,
                     productos: detallesOrden    // Retorno de la lista de productos
                 };
             })
