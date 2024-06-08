@@ -33,57 +33,70 @@ let mediosPago = [...modelMedioPago];
 let detalles = [...modelDetalle];
 let productos = [...modelProducto];
 
-const findOne = (id) => {
-    const ordenId = parseInt(id);
-    // Encontrar la Orden
-    const result = ordenes.find(orden => orden.id === ordenId);
+// Función para obtener la dirección completa
+const obtenerDireccionCompleta = (direccionId) => {
+    const direccion = direcciones.find(direccion => direccion.id === direccionId);
+    if (!direccion) return undefined;   // Caso no encontrar la direccion asociada a la Orden
 
-    // Encontrar la direccion
-    let direccion = direcciones.find(direccion => direccion.id === result.usuarioDireccion_id);
-    let distrito = distritos.find(distrito => distrito.id === direccion.distrito_id);
-    let provincia = provincias.find(provincia => provincia.id === distrito.provincia_id);
-    let departamento = departamentos.find(departamento => departamento.id === provincia.departmento_id);
-    let pais = paises.find(pais => pais.id === departamento.pais_id)
-    // Crear la lista para la direccion
-    const resultDireccion = {
+    const distrito = distritos.find(distrito => distrito.id === direccion.distrito_id);
+    const provincia = provincias.find(provincia => provincia.id === distrito.provincia_id);
+    const departamento = departamentos.find(departamento => departamento.id === provincia.departmento_id);
+    const pais = paises.find(pais => pais.id === departamento.pais_id);
+
+    return {
         avenida: direccion.avenida,
         numero: direccion.numero,
         refer: direccion.refer,
-        distrito: distrito.name,
-        provincia: provincia.name,
-        departamento: departamento.nombre,
-        pais: pais.nombre
-    }
+        distrito: distrito?.name,
+        provincia: provincia?.name,
+        departamento: departamento?.nombre,
+        pais: pais?.nombre
+    };
+};
 
-    // Renombrar el envio
+// Funcion para obtener el detalle de pago
+const obtenerPagoDetalle = (pagoId) => {
+    const pago = pagos.find(pago => pago.id === pagoId);
+    const medioPago = mediosPago.find(medio => medio.pago_id === pago?.id);
+    return pago ? ({
+        id: pago.id,
+        name: pago.nombre,
+        numero: medioPago?.numero,
+    }) : undefined;
+}
+
+// Funcion para obtener el detalle de los productos
+const obtenerProductoDetalle = (detalle) => {
+    const producto = productos.find(producto => producto.id === detalle.producto_id);
+    return producto ? {
+        id: producto.id,
+        title: producto.title,
+        orden_id: detalle.orden_id,
+        cantidad: detalle.cantidad,
+        precioTotal: detalle.precioTotal
+    } : undefined;
+}
+
+const findOne = (id) => {
+    if (id.length !== 11) return undefined; // Caso de que el id no se el numero de la orden
+
+    // Encontrar la orden
+    const result = ordenes.find(orden => orden.numero === id);
+    if (!result) return undefined;          // Caso no encontrar una orden
+
+    const resultDireccion = obtenerDireccionCompleta(result.usuarioDireccion_id);
+
     const envio = modoEnvio.find(envio => envio.id === result.envio_id);
-    const ordEstado = ordenEstado.find(ordEstado => ordEstado.id === result.estado_id)
+    const ordEstado = ordenEstado.find(ordEstado => ordEstado.id === result.estado_id);
 
     // Crear la lista para el medio de pago
-    let pago = pagos.find(pago => pago.id === result.pago_id);
-    let medioPago = mediosPago.find(medio => medio.pago_id === pago.id)
-    const resultPago = medioPago ? ({
-        id: pago.id,
-        name: pago.nombre,
-        numero: medioPago.numero,
-    }) : ({
-        id: pago.id,
-        name: pago.nombre,
-    });
+    const resultPago = obtenerPagoDetalle(result.pago_id);
 
-    // Crear la lista de productos por el orden
+    // Crear la lista de productos por la orden
     const detalle = detalles
-        .filter(detalle => detalle.orden_id === ordenId)
-        .map(detalle => {
-            const producto = productos.find(producto => producto.id === detalle.producto_id);
-            return {
-                id: producto.id,
-                title: producto.title,
-                orden_id: detalle.orden_id,
-                cantidad: detalle.cantidad,
-                precioTotal: detalle.precioTotal
-            };
-        });
+        .filter(detalle => detalle.orden_id === result.id)
+        .map(detalle => obtenerProductoDetalle(detalle))
+        .filter(producto => producto !== undefined);
 
     return {
         id: result.id,
@@ -100,7 +113,8 @@ const findOne = (id) => {
         estado: ordEstado,
         direccion: resultDireccion
     };
-}
+};
+
 
 const update = (payload) => {
     const index = ordenes.findIndex(orden => orden.id == parseInt(payload.id));
