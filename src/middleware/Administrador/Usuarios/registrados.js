@@ -30,7 +30,7 @@ const update = (payload) => {
     const index = usuarios.findIndex(usuario => usuario.id == parseInt(payload.id));
 
     if (index > -1) {
-        usuarios[index] = payload;
+        usuarios[index].estado_id = payload.estado_id;
         return payload;
     }
     else
