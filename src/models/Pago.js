@@ -1,20 +1,20 @@
 const pago = [
     {
         id: 1,
-        name: "QR"
+        nombre: "QR",
     },
     {
         id: 2,
-        name: "Tarjeta de Credito"
+        nombre: "Tarjeta de Credito",
     },
     {
         id: 3,
-        name: "Tarjeta de Debito"
+        nombre: "Tarjeta de Debito",
     },
     {
         id: 4,
-        name: "Tarjeta de Regalo"
-    }
-]
+        nombre: "Tarjeta de Regalo",
+    },
+];
 
 export default pago;
