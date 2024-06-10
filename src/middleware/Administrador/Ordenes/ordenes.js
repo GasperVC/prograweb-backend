@@ -12,6 +12,7 @@ let ordenEstado = [...modelOrdEstado];
 
 const findAll = () => {
     const result = ordenes
+        .filter(orden => orden.eliminado_id !== 0)
         .map(orden => {
             //Para el reconocimiento del estado
             let ordEstado = ordenEstado.find(ordEstado => ordEstado.id === orden.estado_id);
@@ -23,7 +24,8 @@ const findAll = () => {
 
                 if (persona !== undefined) {
                     return {
-                        id: orden.numero,
+                        id: orden.id,
+                        numero: orden.numero,
                         usuario: `${persona.nombre}, ${persona.apellido}`,
                         correo: usuario.correo,
                         fechaOrden: orden.fecha,

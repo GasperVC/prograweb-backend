@@ -9,7 +9,16 @@ const findOne = (req, res) => {
     return sendResult(result, res);
 }
 
+const remove = (req, res) => {
+    const id = req.params.id;
+
+    const result = middleware.remove(id);
+
+    return sendResult(result, res);
+}
+
 const update = (req, res) => {
+    //Sin Corregir, sin usar
     const docente = req.body;
 
     const result = middleware.update(docente);
@@ -24,6 +33,6 @@ const sendResult = (result, res) => {
         return res.status(500).json({ message: 'No encontrado.'});
 }
 
-const controller = { findOne, update }
+const controller = { findOne, remove, update }
 
 export default controller;

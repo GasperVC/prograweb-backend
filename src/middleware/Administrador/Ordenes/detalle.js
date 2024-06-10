@@ -78,10 +78,10 @@ const obtenerProductoDetalle = (detalle) => {
 }
 
 const findOne = (id) => {
-    if (id.length !== 11) return undefined; // Caso de que el id no se el numero de la orden
+    let ordenID = parseInt(id);
 
     // Encontrar la orden
-    const result = ordenes.find(orden => orden.numero === id);
+    const result = ordenes.find(orden => orden.id === ordenID);
     if (!result) return undefined;          // Caso no encontrar una orden
 
     const resultDireccion = obtenerDireccionCompleta(result.usuarioDireccion_id);
@@ -115,8 +115,18 @@ const findOne = (id) => {
     };
 };
 
+const remove = (id) => {
+    const index = ordenes.findIndex(item => item.id == parseInt(id));
+
+    if (index > -1) {
+        ordenes[index].eliminado_id = 0,    // Para filtrar los eliminados
+        ordenes.splice(index,1);
+        return true;
+    } else return false;
+}
 
 const update = (payload) => {
+    // No corregido, no usado
     const index = ordenes.findIndex(orden => orden.id == parseInt(payload.id));
 
     if (index > -1) {
@@ -127,6 +137,6 @@ const update = (payload) => {
         return null;
 }
 
-const middleware = { findOne, update }
+const middleware = { findOne, remove, update }
 
 export default middleware;
