@@ -1,6 +1,6 @@
 import sequelize from "../config/database.js";
 import { DataTypes } from "sequelize";
-import Departamento from "./Departamento.js";
+import Departamento from "./Departamentos.js";
 
 const Provincia = sequelize.define("provincia", {
   id: {

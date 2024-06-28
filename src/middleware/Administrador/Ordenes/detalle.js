@@ -4,17 +4,17 @@ import modelOrden from '../../../models/orden.js'
 import modelDireccion from '../../../models/direccion.js'
 import modelDistrito from '../../../models/distrito.js'
 import modelProvincia from '../../../models/provincia.js'
-import modelDepartamento from '../../../models/departamento.js'
+import modelDepartamento from '../../../models/Departamentos.js'
 import modelPais from '../../../models/pais.js'
 // Estados
-import modelEnvio from '../../../models/envio.js'
+import modelEnvio from '../../../models/Envios.js'
 import modelOrdEstado from '../../../models/ordenEstado.js'
 // MedioPago
 import modelPago from '../../../models/pago.js'
 import modelMedioPago from '../../../models/pagoMedio.js'
 // Producto
 import modelDetalle from '../../../models/detalle.js'
-import modelProducto from '../../../models/producto.js'
+import modelProducto from '../../../models/Productos.js'
 
 let ordenes = [...modelOrden];
 

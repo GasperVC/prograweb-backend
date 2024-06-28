@@ -1,8 +1,7 @@
 import sequelize from "../config/database.js";
 import { DataTypes } from "sequelize";
-import Pais from "./Pais.js";
 
-const Departamento = sequelize.define("departamento", {
+const Envios = sequelize.define("envio", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -10,15 +9,13 @@ const Departamento = sequelize.define("departamento", {
     allowNull: false,
   },
   nombre: {
-    type: DataTypes.STRING(80),
+    type: DataTypes.STRING(60),
     allowNull: false,
   },
-  id_pais: {
-    type: DataTypes.INTEGER,
+  precio: {
+    type: DataTypes.DECIMAL(10, 2),
     allowNull: false,
   },
 });
 
-Departamento.belongsTo(Pais, { foreignKey: "id_pais", targetKey: "id" });
-
-export default Departamento;
+export default Envios;

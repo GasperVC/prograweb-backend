@@ -5,7 +5,7 @@ import modelOrden from '../../../models/orden.js'
 import modelOrdEstado from '../../../models/ordenEstado.js'
 // Producto
 import modelDetalle from '../../../models/detalle.js'
-import modelProducto from '../../../models/producto.js'
+import modelProducto from '../../../models/Productos.js'
 
 let usuarios = [...modelUsuario];
 let personas = [...modelPersona];
