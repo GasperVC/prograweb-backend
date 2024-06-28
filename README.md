@@ -9,3 +9,5 @@ Ejecutar el backend
 Librerias usadas
 - npm install body-parser
 - npm install cors
+- npm i pg
+- npm i sequelize

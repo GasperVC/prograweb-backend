@@ -1,7 +1,7 @@
 import sequelize from "../config/database.js";
 import { DataTypes } from "sequelize";
 
-const Pago = sequelize.define("pago", {
+const EstadoCliente = sequelize.define("estadoCliente", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -9,9 +9,9 @@ const Pago = sequelize.define("pago", {
     allowNull: false,
   },
   nombre: {
-    type: DataTypes.STRING(40),
+    type: DataTypes.STRING(20),
     allowNull: false,
   },
 });
 
-export default Pago;
+export default EstadoCliente;

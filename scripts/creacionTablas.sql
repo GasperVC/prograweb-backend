@@ -1,69 +1,69 @@
 -- Clases independientes 9 de 20
-CREATE TABLE Rol (
+CREATE TABLE IF NOT EXISTS Rol (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(40) NOT NULL
 );
-CREATE TABLE Pago (
+CREATE TABLE IF NOT EXISTS Pago (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(40) NOT NULL
 );
-CREATE TABLE EstadoCliente (
+CREATE TABLE IF NOT EXISTS EstadoCliente (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(20) NOT NULL
 );
-CREATE TABLE Pais (
+CREATE TABLE IF NOT EXISTS Pais (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(80) NOT NULL
 );
-CREATE TABLE EstadoOrden (
+CREATE TABLE IF NOT EXISTS EstadoOrden (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(60) NOT NULL
 );
-CREATE TABLE Coleccion (
+CREATE TABLE IF NOT EXISTS Coleccion (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(150) NOT NULL
 );
-CREATE TABLE Categoria (
+CREATE TABLE IF NOT EXISTS Categoria (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(150) NOT NULL
 );
-CREATE TABLE Serie (
+CREATE TABLE IF NOT EXISTS Serie (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(150) NOT NULL
 );
-CREATE TABLE Envio (
+CREATE TABLE IF NOT EXISTS Envio (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(60) NOT NULL,
     precio DECIMAL(10, 2) NOT NULL
 );
 
 -- Clases dependientes 6 de 20
-CREATE TABLE Departamento (
+CREATE TABLE IF NOT EXISTS Departamento (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(80) NOT NULL,
     id_pais INT NOT NULL,
     FOREIGN KEY (id_pais) REFERENCES Pais(id)
 );
-CREATE TABLE Provincia (
+CREATE TABLE IF NOT EXISTS Provincia (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(80) NOT NULL,
     id_departamento INT NOT NULL,
     FOREIGN KEY (id_departamento) REFERENCES Departamento(id)
 );
-CREATE TABLE Distrito (
+CREATE TABLE IF NOT EXISTS Distrito (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(80) NOT NULL,
     id_provincia INT NOT NULL,
     FOREIGN KEY (id_provincia) REFERENCES Provincia(id)
 );
-CREATE TABLE Usuario (
+CREATE TABLE IF NOT EXISTS Usuario (
     id SERIAL PRIMARY KEY,
     id_rol INT NOT NULL,
     password VARCHAR(40) NOT NULL,
     usuario VARCHAR(40) NOT NULL,
     FOREIGN KEY (id_rol) REFERENCES Rol(id)
 );
-CREATE TABLE Producto (
+CREATE TABLE IF NOT EXISTS Producto (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(150) NOT NULL,
     precio DECIMAL(10, 2) NOT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE Producto (
     FOREIGN KEY (id_coleccion) REFERENCES Coleccion(id),
     FOREIGN KEY (id_categoria) REFERENCES Categoria(id)
 );
-CREATE TABLE Cliente (
+CREATE TABLE IF NOT EXISTS Cliente (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(80) NOT NULL,
     apellido VARCHAR(80) NOT NULL,
@@ -92,7 +92,7 @@ CREATE TABLE Cliente (
 );
 
 -- Clases intermediarias 5 de 20
-CREATE TABLE MedioPago (
+CREATE TABLE IF NOT EXISTS MedioPago (
     id SERIAL PRIMARY KEY,
     numero VARCHAR(20),
     nombre VARCHAR(80),
@@ -102,7 +102,7 @@ CREATE TABLE MedioPago (
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id),
     FOREIGN KEY (id_pago) REFERENCES Pago(id)
 );
-CREATE TABLE ClienteDireccion (
+CREATE TABLE IF NOT EXISTS ClienteDireccion (
     id SERIAL PRIMARY KEY,
     avenida VARCHAR(80) NOT NULL,
     numero VARCHAR(30) NOT NULL,
@@ -112,7 +112,7 @@ CREATE TABLE ClienteDireccion (
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id),
     FOREIGN KEY (id_distrito) REFERENCES Distrito(id)
 );
-CREATE TABLE Orden (
+CREATE TABLE IF NOT EXISTS Orden (
     id SERIAL PRIMARY KEY,
     fecha DATE NOT NULL,
     sub_total DECIMAL(10, 2) NOT NULL,
@@ -130,7 +130,7 @@ CREATE TABLE Orden (
     FOREIGN KEY (id_envio) REFERENCES Envio(id),
     FOREIGN KEY (id_direccion) REFERENCES ClienteDireccion(id)
 );
-CREATE TABLE CarritoCompras (
+CREATE TABLE IF NOT EXISTS CarritoCompras (
     id SERIAL PRIMARY KEY,
     cantidad INT NOT NULL,
     es_para_despues BOOLEAN NOT NULL,
@@ -139,7 +139,7 @@ CREATE TABLE CarritoCompras (
     FOREIGN KEY (id_cliente) REFERENCES Cliente(id),
     FOREIGN KEY (id_producto) REFERENCES Producto(id)
 );
-CREATE TABLE DetalleOrden (
+CREATE TABLE IF NOT EXISTS DetalleOrden (
     id SERIAL PRIMARY KEY,
     cantidad INT NOT NULL,
     precio_total DECIMAL(10, 2) NOT NULL,

@@ -1,12 +1,21 @@
-const envio = [
-    {
-        id: 1,
-        nombre: "Economico Aereo",
-        precio: 10.00
-    },
-    {
-        id: 2,
-        nombre: "Envio Prioritario (5 a 10 dias)",
-        precio: 17.00
-    }]
-export default envio;
+import sequelize from "../config/database.js";
+import { DataTypes } from "sequelize";
+
+const Envio = sequelize.define("envio", {
+  id: {
+    type: DataTypes.INTEGER,
+    primaryKey: true,
+    autoIncrement: true,
+    allowNull: false,
+  },
+  nombre: {
+    type: DataTypes.STRING(60),
+    allowNull: false,
+  },
+  precio: {
+    type: DataTypes.DECIMAL(10, 2),
+    allowNull: false,
+  },
+});
+
+export default Envio;

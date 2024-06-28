@@ -1,7 +1,7 @@
 import sequelize from "../config/database.js";
 import { DataTypes } from "sequelize";
 
-const Pago = sequelize.define("pago", {
+const Rol = sequelize.define("rol", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -14,4 +14,4 @@ const Pago = sequelize.define("pago", {
   },
 });
 
-export default Pago;
+export default Rol;
