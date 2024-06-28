@@ -11,3 +11,4 @@ Librerias usadas
 - npm install cors
 - npm i pg
 - npm i sequelize
+- npm i pg-hstore
