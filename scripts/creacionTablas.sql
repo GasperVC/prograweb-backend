@@ -60,7 +60,6 @@ CREATE TABLE IF NOT EXISTS Usuario (
     id SERIAL PRIMARY KEY,
     id_rol INT NOT NULL,
     password VARCHAR(40) NOT NULL,
-    usuario VARCHAR(40) NOT NULL,
     FOREIGN KEY (id_rol) REFERENCES Rol(id)
 );
 CREATE TABLE IF NOT EXISTS Producto (

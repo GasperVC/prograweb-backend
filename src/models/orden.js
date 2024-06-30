@@ -3,7 +3,7 @@ import { DataTypes } from "sequelize";
 import Cliente from "./Cliente.js";
 import EstadoOrden from "./EstadoOrden.js";
 import MedioPago from "./MedioPago.js";
-import Envio from "./Envios.js";
+import Envio from "./Envio.js";
 import ClienteDireccion from "./ClienteDireccion.js";
 
 const Orden = sequelize.define(

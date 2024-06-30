@@ -1,5 +1,5 @@
 import express from "express";
-import controller from "../controllers/Envios.js";
+import controller from "../controllers/Envio.js";
 
 const router = express.Router();
 

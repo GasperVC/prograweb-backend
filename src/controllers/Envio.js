@@ -1,4 +1,4 @@
-import model from "../models/Envios.js";
+import model from "../models/Envio.js";
 import RepositoryBase from "../repositories/base.js";
 
 const repository = new RepositoryBase(model);

@@ -46,6 +46,6 @@ const sendResult = (result, res) => {
   else return res.status(500).json({ message: "No encontrado." });
 };
 
-const controller = { findAll, create, findOne, remove, update };
+const controllerPais = { findAll, create, findOne, remove, update };
 
-export default controller;
+export default controllerPais;

@@ -1,6 +1,5 @@
 import sequelize from "../config/database.js";
 import { DataTypes } from "sequelize";
-import Productos from "./Productos.js"
 
 const Categoria = sequelize.define(
   "categoria",

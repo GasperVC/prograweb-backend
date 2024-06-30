@@ -1,7 +1,7 @@
 import sequelize from "../config/database.js";
 import { DataTypes } from "sequelize";
 
-const Pais = sequelize.define(
+const PaisMD = sequelize.define(
   "pais",
   {
     id: {
@@ -21,4 +21,4 @@ const Pais = sequelize.define(
   }
 );
 
-export default Pais;
+export default PaisMD;

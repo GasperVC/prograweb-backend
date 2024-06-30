@@ -1,4 +1,4 @@
-import model from "../models/Departamentos.js";
+import model from "../models/Departamento.js";
 import RepositoryBase from "../repositories/base.js";
 
 const repository = new RepositoryBase(model);

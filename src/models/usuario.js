@@ -18,11 +18,7 @@ const Usuario = sequelize.define(
     password: {
       type: DataTypes.STRING(40),
       allowNull: false,
-    },
-    usuario: {
-      type: DataTypes.STRING(40),
-      allowNull: false,
-    },
+    }
   },
   {
     timestamps: false, // Esto NO agregará automáticamente createdAt y updatedAt
