@@ -1,7 +1,7 @@
 -- Insertar datos en la tabla Rol
-INSERT INTO Rol (nombre) VALUES 
-('cliente'),
-('administrador');
+INSERT INTO Rol (id, nombre) VALUES 
+(1, 'cliente'),
+(2, 'administrador');
 
 -- Insertar datos en la tabla Pago
 INSERT INTO Pago (id, nombre) VALUES 
@@ -2444,7 +2444,7 @@ INSERT INTO ClienteDireccion (id, avenida, numero, referencia, id_cliente, id_di
 (100, 'Norway Maple', '4', 'Road', 29, 1595);
 
 -- Insertar datos en la tabla Orden
-INSERT INTO Orden (id, fecha, sub_total, impuesto, total, cantidad_total, id_cliente, id_estado, id_medioPago, id_envio, id_direccion) values
+INSERT INTO Orden (id, fecha, sub_total, impuesto, total, cantidad_total, id_cliente, id_estado, id_mediopago, id_envio, id_direccion) values
 (1, '2024-06-23 20:23:20', 119.1, 35, 241, 1, 4, 3, 18, 1, 33),
 (2, '2024-05-14 08:48:36', 119.6, 22, 243, 1, 14, 2, 11, 1, 10),
 (3, '2024-06-28 07:56:06', 104.5, 27, 198, 10, 26, 3, 25, 1, 19),
@@ -2728,7 +2728,7 @@ INSERT INTO DetalleOrden (id, cantidad, precio_total, id_orden, id_producto) val
 (219, 3, 150.2, 7, 32),
 (220, 5, 160.3, 59, 11);
 
-INSERT INTO DetalleOrden (id, cantidad, es_para_despues, id_cliente, id_producto) values 
+INSERT INTO CarritoCompras (id, cantidad, es_para_despues, id_cliente, id_producto) values 
 (1, 4, true, 17, 44),
 (2, 3, true, 12, 30),
 (3, 4, false, 15, 50),

@@ -43,7 +43,7 @@ const Orden = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    id_medioPago: {
+    id_mediopago: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -64,7 +64,7 @@ const Orden = sequelize.define(
 
 Orden.belongsTo(Cliente, { foreignKey: "id_cliente", targetId: "id" });
 Orden.belongsTo(EstadoOrden, { foreignKey: "id_estado", targetId: "id" });
-Orden.belongsTo(MedioPago, { foreignKey: "id_medioPago", targetId: "id" });
+Orden.belongsTo(MedioPago, { foreignKey: "id_mediopago", targetId: "id" });
 Orden.belongsTo(Envio, { foreignKey: "id_envio", targetId: "id" });
 Orden.belongsTo(ClienteDireccion, {
   foreignKey: "id_direccion",
