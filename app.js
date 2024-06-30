@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from 'body-parser';
 import cors from 'cors'
 
-// Routers
+// Routers a la base de datos
 import CarritoComprasRouter from './src/routes/CarritoCompras.js';
 import CategoriaRouter from './src/routes/Categoria.js';
 import ClienteRouter from './src/routes/Cliente.js';
@@ -24,6 +24,10 @@ import RolRouter from "./src/routes/Rol.js";
 import SerieRouter from "./src/routes/Serie.js";
 import UsuarioRouter from "./src/routes/Usuario.js";
 
+// Routers a las APIs
+import AdminClientesRegisOrden from "./src/routes/admin/clientes/RegistradosYOrdenes.js"
+import AdminOrdenesListaDetalle from "./src/routes/admin/ordenes/OrdenesYDetalle.js"
+
 const app = express();
 app.use(bodyParser.json());
 app.use(cors());
@@ -32,7 +36,7 @@ app.get("/", (req, res) => {
   return res.json({ message: "Hello World", code: "201" });
 });
 
-// Routers
+// Routers a la base de datos
 app.use('/carritoCompras', CarritoComprasRouter);
 app.use('/categoria', CategoriaRouter);
 app.use('/cliente', ClienteRouter);
@@ -54,4 +58,7 @@ app.use("/rol", RolRouter);
 app.use("/serie", SerieRouter);
 app.use("/usuario", UsuarioRouter);
 
+// Routers a las APIs
+app.use("/admin/clientes", AdminClientesRegisOrden); // Cliff
+app.use("/admin/ordenes", AdminOrdenesListaDetalle); // Cliff
 export default app;
