@@ -5,7 +5,7 @@ import controller2 from "../../../controllers/admin/Ordenes/AdminOrdListDetalle.
 const router = express.Router();
 
 router.get("/", controller1.listarOrdenesController);
-router.get("/:id", controller2.obtenerDetallesOrdenController);
-router.delete("/:id", controller2.eliminarOrdenController);
+router.get("/detalle/:id", controller2.obtenerDetallesOrdenController);
+router.delete("/detalle/:id", controller2.eliminarOrdenController);
 
 export default router;
