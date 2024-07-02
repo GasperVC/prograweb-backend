@@ -10,23 +10,26 @@ const clienteRepository = new RepositoryBase(Ordenes);
 
 const listarOrdenesCliente = async (id) => {
   try {
-    const cliente = await Cliente.findByPk(id);
+    const cliente = await Cliente.findByPk(id, {
+      attributes: ["id", "nombre", "apellido", "fecha_registro", "correo"],
+    });
     if (!cliente) {
       throw new Error("Cliente no encontrado");
     }
 
     const ordenes = await Ordenes.findAll({
-      where: { id_cliente: id },
+      where: { id_cliente: cliente.id },
+      attributes: ["id", "fecha", "total", "id_estado"],
       include: [
         {
-          model: Cliente,
-          attributes: ["nombre", "apellido", "correo"],
-        },
-        {
           model: EstadoOrden,
-          attributes: ["nombre"],
+          attributes: ["nombre", "id"],
         },
       ],
+      order: [
+        ["fecha", "ASC"], // Ordenar por el campo 'id' en orden ascendente
+      ],
+      limit: 10,
     });
 
     if (!ordenes || ordenes.length === 0) {
@@ -37,6 +40,7 @@ const listarOrdenesCliente = async (id) => {
       ordenes.map(async (orden) => {
         const detalles = await DetalleOrden.findAll({
           where: { id_orden: orden.id },
+          attributes: ["id"],
           include: [
             {
               model: Productos,

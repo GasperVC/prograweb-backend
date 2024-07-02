@@ -4,8 +4,8 @@ import controller2 from '../../../controllers/admin/clientes/AdmCliOrdDetalle.js
 
 const router = express.Router();
 
-router.get("/:id", controller2.listarOrdenesClienteController);
+router.get("/detalle/:id", controller2.listarOrdenesClienteController);
 router.get("/", controller1.registrados);
-router.put("/modificar", controller1.actualizarEstado);
+router.put("/", controller1.actualizarEstado);
 
 export default router;
