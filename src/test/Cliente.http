@@ -1,0 +1,18 @@
+GET http://localhost:3002/cliente
+###
+//con esto voy a poder acceder tanto al correo como contraseña para 
+//iniciar sesion con una sola entidad amarrada
+GET http://localhost:3002/cliente/findallcomplete
+###
+//Esta funcion todavia no!! porque no funciona adecuadamente
+POST http://localhost:3002/cliente
+Content-Type: application/json
+
+{
+    "nombre": "Mauricio",
+    "apellido": "Ramirez",
+    "fecha_registro": "2024-07-02T10:42:36.000Z",
+    "correo": "rm@yahoo.com",
+    "id_usuario": 30,
+    "id_estado": 1
+}

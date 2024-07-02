@@ -1,0 +1,4 @@
+GET http://localhost:3002/usuario
+###
+GET http://localhost:3002/rol
+
