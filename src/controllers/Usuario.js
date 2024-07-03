@@ -1,5 +1,6 @@
 import model from "../models/Usuario.js";
 import RepositoryBase from "../repositories/base.js";
+import Usuarioservice from "../services/DatosUsuarioLogin.js";
 
 const repository = new RepositoryBase(model);
 
@@ -8,6 +9,13 @@ const findAll = async (req, res) => {
 
   return sendResult(result, res);
 };
+
+const findAllComplete = async (req, res) => {
+
+  const result = await Usuarioservice.findAllComplete();
+
+  return sendResult(result, res);
+}
 
 const create = async (req, res) => {
   const payload = req.body;
@@ -46,6 +54,6 @@ const sendResult = (result, res) => {
   else return res.status(500).json({ message: "No encontrado." });
 };
 
-const controller = { findAll, create, findOne, remove, update };
+const controller = { findAll,findAllComplete, create, findOne, remove, update };
 
 export default controller;
