@@ -1,0 +1,4 @@
+###
+GET http://localhost:3001/orden
+###
+GET http://localhost:3001/orden/2
