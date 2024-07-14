@@ -27,7 +27,7 @@ const listarOrdenesCliente = async (id) => {
         },
       ],
       order: [
-        ["fecha", "ASC"], // Ordenar por el campo 'id' en orden ascendente
+        ["fecha", "DESC"], // Ordenar por el campo 'id' en orden ascendente
       ],
       limit: 10,
     });
