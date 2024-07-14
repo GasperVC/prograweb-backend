@@ -65,8 +65,6 @@ app.use("/usuario", UsuarioRouter);
 
 app.use("/ListProduct", ProductosList);
 
-
-
 // Routers a las APIs
 app.use("/admin/clientes", AdminClientesRegisOrden); // Cliff
 app.use("/admin/ordenes", AdminOrdenesListaDetalle); // Cliff
