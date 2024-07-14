@@ -1,4 +1,4 @@
-import Usuario from "../models/usuario.js"
+import Usuario from "../models/Usuario.js"
 import Rol from "../models/Rol.js"
 import RepositoryBase from "../repositories/base.js"
 

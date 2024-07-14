@@ -1,5 +1,5 @@
 import Cliente from "../models/Cliente.js"
-import Usuario from "../models/usuario.js"
+import Usuario from "../models/Usuario.js"
 
 import RepositoryBase from "../repositories/base.js"
 
