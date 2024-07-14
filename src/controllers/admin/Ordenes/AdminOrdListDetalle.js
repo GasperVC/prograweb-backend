@@ -5,10 +5,8 @@ import {
 
 const obtenerDetallesOrdenController = async (req, res) => {
   const ordenId = req.params.id;
-    console.log(ordenId)
   try {
     const detallesOrden = await obtenerDetallesOrden(ordenId);
-    console.log(detallesOrden);
 
     if (detallesOrden) {
       return res.status(200).json(detallesOrden);

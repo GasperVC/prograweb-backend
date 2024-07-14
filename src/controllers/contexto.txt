@@ -1,3 +1,0 @@
-almacena archivos de controlador que contienen lógica empresarial y manejan solicitudes y respuestas HTTP.
-
-SOLICITUDES Y RESPUESTAS

@@ -1,4 +1,0 @@
-Defina archivos de ruta para separar diferentes puntos finales de API o rutas web.
-Esto mantiene su código modular y fácil de mantener.
-
-CONEXION CON EL FRONT
