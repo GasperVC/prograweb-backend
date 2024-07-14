@@ -1,0 +1,15 @@
+GET http://localhost:3001/usuario
+###
+GET http://localhost:3001/rol
+
+###
+GET http://localhost:3001/usuario/findallcomplete
+####
+POST http://localhost:3001/usuario
+Content-Type: application/json
+
+{
+    "id": 33,
+    "id_rol": 2,
+    "password": "ADMINPRINCIPAL"
+}

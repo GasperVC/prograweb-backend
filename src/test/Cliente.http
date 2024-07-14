@@ -1,0 +1,23 @@
+GET http://localhost:3001/cliente
+###
+//con esto voy a poder acceder tanto al correo como contraseña para 
+//iniciar sesion con una sola entidad amarrada
+GET http://localhost:3001/cliente/findallcomplete
+###
+GET http://localhost:3001/cliente/1
+
+####
+//Creamos un cliente, esto debe estar amarrado 
+//a la entidad usuario 
+POST http://localhost:3001/cliente
+Content-Type: application/json
+
+{
+    "id": 33,
+    "nombre": "Mauricio",
+    "apellido": "Ramirez",
+    "fecha_registro": "2024-02-14 15:51:23",
+    "correo": "rm@yahoo.com",
+    "id_usuario": 33,
+    "id_estado": 1
+}

@@ -1,0 +1,4 @@
+#dependicas
+/node_modules
+.vscode
+.deployment
