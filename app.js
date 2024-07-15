@@ -24,6 +24,13 @@ import RolRouter from "./src/routes/Rol.js";
 import SerieRouter from "./src/routes/Serie.js";
 import UsuarioRouter from "./src/routes/Usuario.js";
 
+import Alumno05Productos from "./src/routes/Alumno05/RouteListProd.js";
+import EstadoProductoRouter from "./src/routes/Alumno05/RouteEstadoProd.js";
+import Alumno05CrearProducto from "./src/routes/Alumno05/RouteCrearProd.js";
+import Alumno05RouteCantOrden from "./src/routes/Alumno05/RouteCantOrden.js";
+import Alumno05RouteCantUsuarios from "./src/routes/Alumno05/RouteCantUsuarios.js";
+import Alumno05RouteIngresos from "./src/routes/Alumno05/RouteIngresos.js";
+
 // Routers a las APIs
 import AdminClientesRegisOrden from "./src/routes/admin/clientes/RegistradosYOrdenes.js"
 import AdminOrdenesListaDetalle from "./src/routes/admin/ordenes/OrdenesYDetalle.js"
@@ -69,7 +76,12 @@ app.use("/ListProduct", ProductosList);
 app.use("/admin/clientes", AdminClientesRegisOrden); // Cliff
 app.use("/admin/ordenes", AdminOrdenesListaDetalle); // Cliff
 
-
+app.use("/admin/productos", Alumno05Productos); //Dmitri
+app.use("/admin/estadoproducto", EstadoProductoRouter); //Dmitri
+app.use("/admin/crearproducto", Alumno05CrearProducto); //Dmitri
+app.use("/admin/cantidadordenes", Alumno05RouteCantOrden); //Dmitri
+app.use("/admin/cantidadusuarios", Alumno05RouteCantUsuarios); //Dmitri
+app.use("/admin/ingresos", Alumno05RouteIngresos); //Dmitri
 
 
 export default app;

@@ -3,6 +3,7 @@ import { DataTypes } from "sequelize";
 import Serie from "./Serie.js";
 import Coleccion from "./Coleccion.js";
 import Categoria from "./Categoria.js";
+import EstadoProducto from "./EstadoProducto.js";
 
 const Productos = sequelize.define(
   "producto",
@@ -41,6 +42,11 @@ const Productos = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
+    fecha_registro: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
     id_serie: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -50,6 +56,10 @@ const Productos = sequelize.define(
       allowNull: false,
     },
     id_categoria: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+    id_estado: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -63,5 +73,6 @@ const Productos = sequelize.define(
 Productos.belongsTo(Serie, { foreignKey: "id_serie", targetId: "id" });
 Productos.belongsTo(Coleccion, { foreignKey: "id_coleccion", targetId: "id" });
 Productos.belongsTo(Categoria, { foreignKey: "id_categoria", targetId: "id" });
+Productos.belongsTo(EstadoProducto, { foreignKey: "id_estado", targetId: "id" });
 
 export default Productos;

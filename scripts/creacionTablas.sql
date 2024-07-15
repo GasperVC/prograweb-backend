@@ -11,6 +11,10 @@ CREATE TABLE IF NOT EXISTS EstadoCliente (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(20) NOT NULL
 );
+CREATE TABLE IF NOT EXISTS EstadoProducto (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(20) NOT NULL
+);
 CREATE TABLE IF NOT EXISTS Pais (
     id SERIAL PRIMARY KEY,
     nombre VARCHAR(80) NOT NULL
@@ -71,12 +75,15 @@ CREATE TABLE IF NOT EXISTS Producto (
     url TEXT,
     caracteristicas TEXT,
     stock INT NOT NULL,
+    fecha_registro DATE NOT NULL,
     id_serie INT NOT NULL,
     id_coleccion INT NOT NULL,
     id_categoria INT NOT NULL,
+    id_estado INT NOT NULL,
     FOREIGN KEY (id_serie) REFERENCES Serie(id),
     FOREIGN KEY (id_coleccion) REFERENCES Coleccion(id),
-    FOREIGN KEY (id_categoria) REFERENCES Categoria(id)
+    FOREIGN KEY (id_categoria) REFERENCES Categoria(id),
+    FOREIGN KEY (id_estado) REFERENCES EstadoProducto(id),
 );
 CREATE TABLE IF NOT EXISTS Cliente (
     id SERIAL PRIMARY KEY,
